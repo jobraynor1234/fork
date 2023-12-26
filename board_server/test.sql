@@ -24,13 +24,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `nickname` VARCHAR(50) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `point` INT NULL,
   `birthday` DATE NOT NULL,
   `tel` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `nickname_UNIQUE` (`nickname` ASC) VISIBLE);
+
 
 -- -----------------------------------------------------
 -- Table `mydb`.`board`
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`product` (
   `bar_num` VARCHAR(100) NOT NULL,
   `info` VARCHAR(1000) NULL,
   `createdAt` DATETIME NULL DEFAULT now(),
-  `like_cnt` INT NULL,
+  `like_count` INT NULL,
   `sale` INT NULL,
   `user_id` INT NULL COMMENT 'user table(user_id)',
   PRIMARY KEY (`product_id`),
@@ -146,6 +147,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`wishlist` (
     REFERENCES `mydb`.`product` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -211,3 +217,4 @@ UPDATE product SET ='판매중' where product_id IN (1,2,3);
 
 
 
+-- 수정
